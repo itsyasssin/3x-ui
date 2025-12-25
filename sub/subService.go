@@ -11,13 +11,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/goccy/go-json"
 
-	"github.com/mhsanaei/3x-ui/v2/database"
-	"github.com/mhsanaei/3x-ui/v2/database/model"
-	"github.com/mhsanaei/3x-ui/v2/logger"
-	"github.com/mhsanaei/3x-ui/v2/util/common"
-	"github.com/mhsanaei/3x-ui/v2/util/random"
-	"github.com/mhsanaei/3x-ui/v2/web/service"
-	"github.com/mhsanaei/3x-ui/v2/xray"
+	"github.com/itsyasssin/3x-ui/v2/database"
+	"github.com/itsyasssin/3x-ui/v2/database/model"
+	"github.com/itsyasssin/3x-ui/v2/logger"
+	"github.com/itsyasssin/3x-ui/v2/util/common"
+	"github.com/itsyasssin/3x-ui/v2/util/random"
+	"github.com/itsyasssin/3x-ui/v2/web/service"
+	"github.com/itsyasssin/3x-ui/v2/xray"
 )
 
 // SubService provides business logic for generating subscription links and managing subscription data.
@@ -457,7 +457,16 @@ func (s *SubService) genVlessLink(inbound *model.Inbound, email string) string {
 					params["pqv"] = pqv
 				}
 			}
+
+			// if spxValue, ok := searchKey(realitySettings, "spiderX"); ok {
+			// 	if spx, ok := spxValue.(string); ok && len(spx) > 0 {
+			// 		params["spiderX"] = spx
+			// 	}
+			// }
+			fmt.Println("HELLO FROM HERE")
+
 			params["spx"] = "/" + random.Seq(15)
+
 		}
 
 		if streamNetwork == "tcp" && len(clients[clientIndex].Flow) > 0 {
@@ -652,6 +661,11 @@ func (s *SubService) genTrojanLink(inbound *model.Inbound, email string) string 
 					params["pqv"] = pqv
 				}
 			}
+			// if spxValue, ok := searchKey(realitySettings, "spiderX"); ok {
+			// 	if spx, ok := spxValue.(string); ok && len(spx) > 0 {
+			// 		params["spiderX"] = spx
+			// 	}
+			// }
 			params["spx"] = "/" + random.Seq(15)
 		}
 

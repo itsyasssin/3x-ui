@@ -6,12 +6,12 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/mhsanaei/3x-ui/v2/database/model"
-	"github.com/mhsanaei/3x-ui/v2/logger"
-	"github.com/mhsanaei/3x-ui/v2/util/json_util"
-	"github.com/mhsanaei/3x-ui/v2/util/random"
-	"github.com/mhsanaei/3x-ui/v2/web/service"
-	"github.com/mhsanaei/3x-ui/v2/xray"
+	"github.com/itsyasssin/3x-ui/v2/database/model"
+	"github.com/itsyasssin/3x-ui/v2/logger"
+	"github.com/itsyasssin/3x-ui/v2/util/json_util"
+	"github.com/itsyasssin/3x-ui/v2/util/random"
+	"github.com/itsyasssin/3x-ui/v2/web/service"
+	"github.com/itsyasssin/3x-ui/v2/xray"
 )
 
 //go:embed default.json
@@ -270,9 +270,11 @@ func (s *SubJsonService) realityData(rData map[string]any) map[string]any {
 	rltyData["publicKey"] = rltyClientSettings["publicKey"]
 	rltyData["fingerprint"] = rltyClientSettings["fingerprint"]
 	rltyData["mldsa65Verify"] = rltyClientSettings["mldsa65Verify"]
+	// rltyData["spiderX"] = rltyClientSettings["spiderX"]
 
 	// Set random data
 	rltyData["spiderX"] = "/" + random.Seq(15)
+
 	shortIds, ok := rData["shortIds"].([]any)
 	if ok && len(shortIds) > 0 {
 		rltyData["shortId"] = shortIds[random.Num(len(shortIds))].(string)
