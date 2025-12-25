@@ -458,13 +458,17 @@ func (s *SubService) genVlessLink(inbound *model.Inbound, email string) string {
 				}
 			}
 
-			// if spxValue, ok := searchKey(realitySettings, "spiderX"); ok {
-			// 	if spx, ok := spxValue.(string); ok && len(spx) > 0 {
-			// 		params["spiderX"] = spx
-			// 	}
-			// }
 			logger.Info("GEN VLESS")
-			params["spx"] = "/" + random.Seq(15)
+
+			if spxValue, ok := searchKey(realitySettings, "spiderX"); ok {
+				if spx, ok := spxValue.(string); ok && len(spx) > 0 {
+					if spx == "$" {
+						params["spx"] = "/" + random.Seq(15)
+					} else {
+						params["spiderX"] = spx
+					}
+				}
+			}
 
 		}
 
@@ -660,14 +664,18 @@ func (s *SubService) genTrojanLink(inbound *model.Inbound, email string) string 
 					params["pqv"] = pqv
 				}
 			}
-			logger.Info("GEN TROJAN")
-			// if spxValue, ok := searchKey(realitySettings, "spiderX"); ok {
-			// 	if spx, ok := spxValue.(string); ok && len(spx) > 0 {
-			// 		params["spiderX"] = spx
-			// 	}
-			// }
 
-			params["spx"] = "/XXXX" + random.Seq(15)
+			logger.Info("GEN TROJAN")
+			if spxValue, ok := searchKey(realitySettings, "spiderX"); ok {
+				if spx, ok := spxValue.(string); ok && len(spx) > 0 {
+					if spx == "$" {
+						params["spx"] = "/" + random.Seq(15)
+					} else {
+						params["spiderX"] = spx
+					}
+				}
+			}
+
 		}
 
 		if streamNetwork == "tcp" && len(clients[clientIndex].Flow) > 0 {

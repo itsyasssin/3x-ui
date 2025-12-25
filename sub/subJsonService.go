@@ -270,11 +270,17 @@ func (s *SubJsonService) realityData(rData map[string]any) map[string]any {
 	rltyData["publicKey"] = rltyClientSettings["publicKey"]
 	rltyData["fingerprint"] = rltyClientSettings["fingerprint"]
 	rltyData["mldsa65Verify"] = rltyClientSettings["mldsa65Verify"]
-	// rltyData["spiderX"] = rltyClientSettings["spiderX"]
 
 	// Set random data
-	rltyData["spiderX"] = "/XXX" + random.Seq(15)
-	logger.Info("HERE")
+	logger.Info("SUB JSON")
+	spx := rltyClientSettings["spiderX"]
+
+	if spx == "$" {
+		rltyData["spiderX"] = "/" + random.Seq(15)
+	} else {
+		rltyData["spiderX"] = rltyClientSettings["spiderX"]
+	}
+
 	shortIds, ok := rData["shortIds"].([]any)
 	if ok && len(shortIds) > 0 {
 		rltyData["shortId"] = shortIds[random.Num(len(shortIds))].(string)
