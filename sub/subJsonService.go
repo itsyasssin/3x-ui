@@ -273,8 +273,8 @@ func (s *SubJsonService) realityData(rData map[string]any) map[string]any {
 	// rltyData["spiderX"] = rltyClientSettings["spiderX"]
 
 	// Set random data
-	rltyData["spiderX"] = "/" + random.Seq(15)
-
+	rltyData["spiderX"] = "/XXX" + random.Seq(15)
+	logger.Info("HERE")
 	shortIds, ok := rData["shortIds"].([]any)
 	if ok && len(shortIds) > 0 {
 		rltyData["shortId"] = shortIds[random.Num(len(shortIds))].(string)
