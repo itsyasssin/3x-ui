@@ -465,7 +465,7 @@ func (s *SubService) genVlessLink(inbound *model.Inbound, email string) string {
 					if spx == "$" {
 						params["spx"] = "/" + random.Seq(15)
 					} else {
-						params["spiderX"] = spx
+						params["spx"] = spx
 					}
 				}
 			}
@@ -671,7 +671,7 @@ func (s *SubService) genTrojanLink(inbound *model.Inbound, email string) string 
 					if spx == "$" {
 						params["spx"] = "/" + random.Seq(15)
 					} else {
-						params["spiderX"] = spx
+						params["spx"] = spx
 					}
 				}
 			}
